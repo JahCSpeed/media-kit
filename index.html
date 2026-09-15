@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Shugey Media Kit</title>
+<meta name="description" content="Shugey — PC builds, hardware, and gaming optimization creator media kit for brand collabs.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --paper: #f6f4ee;
+    --paper-raised: #fbfaf6;
+    --ink: #1a1d1f;
+    --muted: #6b6558;
+    --line: #c9c4b8;
+    --accent: #c6672b;
+    --accent-ink: #ffffff;
+    --accent2: #3d7a6b;
+    --tag-bg: #ece7db;
+    --shadow: 0 1px 0 rgba(26,29,31,0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14171a;
+      --paper-raised: #1b1f22;
+      --ink: #ede9e0;
+      --muted: #9b968c;
+      --line: #33383d;
+      --accent: #e08a4a;
+      --accent-ink: #14171a;
+      --accent2: #5fa893;
+      --tag-bg: #22262a;
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14171a;
+    --paper-raised: #1b1f22;
+    --ink: #ede9e0;
+    --muted: #9b968c;
+    --line: #33383d;
+    --accent: #e08a4a;
+    --accent-ink: #14171a;
+    --accent2: #5fa893;
+    --tag-bg: #22262a;
+    --shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    line-height: 1.55;
+  }
+
+  .sheet {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 56px 24px 72px;
+  }
+
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+
+  .placeholder {
+    background: var(--tag-bg);
+    color: var(--accent);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+
+  /* header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 20px;
+  }
+  .doc-id {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  h1.name {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 6vw, 46px);
+    line-height: 1.02;
+    margin: 6px 0 0;
+    text-wrap: balance;
+  }
+  .handle {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent);
+    font-size: 15px;
+    margin-top: 4px;
+  }
+  .tagline {
+    max-width: 280px;
+    text-align: right;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* pillars row */
+  .pillars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .pillar {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    background: var(--tag-bg);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+
+  /* section headings */
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin: 0 0 6px;
+  }
+  section { margin-top: 44px; }
+  h2 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+
+  /* stats grid */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .stat {
+    background: var(--paper-raised);
+    padding: 18px 16px;
+  }
+  .stat .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 26px;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+  }
+  .stat .label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* platform breakdown */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .platform-card {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--paper-raised);
+    box-shadow: var(--shadow);
+    padding: 16px;
+  }
+  .platform-card .ptop {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+  }
+  .platform-card .pname {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+  .platform-card .phandle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+  }
+  .platform-card .prow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 0;
+  }
+  .platform-card .prow .k {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .platform-card .prow .v {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stats-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 22px 0 8px;
+  }
+
+  .intent-line {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 16px 0 0;
+  }
+  .intent-line .k {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .intent-line .v {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+  }
+
+  p { margin: 0 0 12px; color: var(--ink); }
+  p.lede { color: var(--muted); }
+
+  /* signature format callout */
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--tag-bg);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 4px 0 20px;
+  }
+  .callout .callout-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .callout p { margin: 0; }
+
+  /* content pillars detail */
+  .pillar-list {
+    display: grid;
+    gap: 14px;
+  }
+  .pillar-row {
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    gap: 14px;
+    align-items: baseline;
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+  .pillar-row:first-child { border-top: none; padding-top: 0; }
+  .pillar-row .k {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--accent2);
+  }
+  @media (max-width: 480px) {
+    .pillar-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* audience */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+  .audience-item .k {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .audience-item .v {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+    margin-top: 3px;
+  }
+
+  /* collabs */
+  .collab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .collab-card {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 16px;
+    background: var(--paper-raised);
+    box-shadow: var(--shadow);
+  }
+  .collab-card .brand {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .collab-card .metric {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent2);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .collab-card .desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* rates table */
+  table.rates {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  table.rates th, table.rates td {
+    text-align: left;
+    padding: 11px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  table.rates th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  table.rates td.price {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .tbl-wrap { overflow-x: auto; }
+
+  .note {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  /* footer / contact */
+  footer {
+    margin-top: 56px;
+    border-top: 2px solid var(--ink);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .contact-list {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .contact-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); }
+  .rev {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <div>
+      <div class="doc-id">Media Kit &nbsp;/&nbsp; Rev. <span class="placeholder">DATE</span></div>
+      <h1 class="name">Shugey</h1>
+      <div class="handle">@therealshugey</div>
+    </div>
+    <div class="tagline">PC builds, hardware breakdowns, and gaming optimization for an audience that actually buys parts.</div>
+  </header>
+
+  <div class="pillars">
+    <span class="pillar">PC Builds</span>
+    <span class="pillar">Hardware &amp; Parts</span>
+    <span class="pillar">Gaming Optimization</span>
+    <span class="pillar">Tech News</span>
+  </div>
+
+  <section>
+    <p class="eyebrow">01 — Reach</p>
+    <h2>Platforms</h2>
+    <div class="platform-grid">
+      <div class="platform-card">
+        <div class="ptop">
+          <span class="pname">TikTok</span>
+          <span class="phandle">@therealshugey</span>
+        </div>
+        <div class="prow"><span class="k">Followers</span><span class="v">1.3K</span></div>
+        <div class="prow"><span class="k">Views, last 28 days</span><span class="v">22K</span></div>
+        <div class="prow"><span class="k">Engagement, last 28 days*</span><span class="v">5.1%</span></div>
+      </div>
+      <div class="platform-card">
+        <div class="ptop">
+          <span class="pname">Instagram</span>
+          <span class="phandle">@therealshugey</span>
+        </div>
+        <div class="prow"><span class="k">Followers</span><span class="v">106</span></div>
+        <div class="prow"><span class="k">Avg. reel views*</span><span class="v">~1.5K</span></div>
+        <div class="prow"><span class="k">Reach beyond followers**</span><span class="v">85.6%</span></div>
+      </div>
+      <div class="platform-card">
+        <div class="ptop">
+          <span class="pname">YouTube</span>
+          <span class="phandle">@therealshugey</span>
+        </div>
+        <div class="prow"><span class="k">Subscribers</span><span class="v">248</span></div>
+        <div class="prow"><span class="k">Views, last 28 days</span><span class="v">24.4K</span></div>
+        <div class="prow"><span class="k">Format</span><span class="v">Shorts + long-form</span></div>
+      </div>
+    </div>
+    <p class="stats-label">Combined</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="num">1.7K</div>
+        <div class="label">Total followers/subs, all 3 platforms</div>
+      </div>
+      <div class="stat">
+        <div class="num">46.4K</div>
+        <div class="label">28-day views, TikTok + YouTube</div>
+      </div>
+      <div class="stat">
+        <div class="num">5/wk</div>
+        <div class="label">Posting cadence</div>
+      </div>
+    </div>
+    <p class="note">*TikTok engagement is calculated as (likes + comments + shares) ÷ views over the same 28-day window — not a number TikTok reports directly. Instagram's avg. reel views is the average of the view counts shown across the 19 reels visible on the profile grid (lifetime views per reel, not a 28-day window), so it isn't folded into the 28-day views figure above. **"Reach beyond followers" is Instagram's own interaction breakdown (85.6% of interactions came from non-followers) — used instead of a raw engagement-rate number, which would be skewed to a meaningless-looking figure by how small the follower count still is relative to reel reach. It's arguably the more useful stat here: it shows reels are being surfaced to new audiences, not just an existing base. Refresh all of this before sending — stale stats are the fastest way to lose credibility with a brand's marketing team.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">02 — Content</p>
+    <h2>What I make</h2>
+    <p class="lede">Short-form videos built around real builds and real hardware decisions — not unboxings for their own sake. The audience watches because they're deciding what to buy.</p>
+    <div class="callout">
+      <div class="callout-label">The signature bit</div>
+      <p>Every video, I use a different object as my "microphone" — a stick of RAM, a wrench, a controller, whatever fits the video. A brand's product can be that prop: it's in-hand and on-screen for the entire video, not a 3-second cutaway or an end-card mention. It also just fits the format — the product isn't shoehorned in, it's the bit.</p>
+    </div>
+    <div class="pillar-list">
+      <div class="pillar-row">
+        <div class="k">PC BUILDS</div>
+        <div>Full and budget build videos — part selection, compatibility calls, and the tradeoffs, not just a timelapse.</div>
+      </div>
+      <div class="pillar-row">
+        <div class="k">HARDWARE</div>
+        <div>GPU/CPU/cooling breakdowns, comparisons, and honest first-impressions on new releases.</div>
+      </div>
+      <div class="pillar-row">
+        <div class="k">OPTIMIZATION</div>
+        <div>Settings, BIOS tweaks, and performance tuning that gets a viewer measurably better FPS or thermals.</div>
+      </div>
+      <div class="pillar-row">
+        <div class="k">TECH NEWS</div>
+        <div>Fast takes on industry announcements, launches, and the stuff PC people are actually arguing about.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">03 — Audience <span class="placeholder">last 28 days, by platform</span></p>
+    <h2>Who's watching</h2>
+    <div class="tbl-wrap">
+      <table class="rates">
+        <thead>
+          <tr><th>Platform</th><th>Top age bracket</th><th>Gender split</th><th>Top geography</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>YouTube</td><td>25–34 · 38.0%</td><td>95.0% M / 4.9% F</td><td>US · 50.6%</td></tr>
+          <tr><td>TikTok</td><td>25–34 · 46.8%</td><td>63% M / 33% F / 4% other</td><td>Brazil · 31.0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="intent-line">
+      <span class="k">Purchase intent</span><span class="v placeholder">High — active buyers</span>
+    </p>
+    <p class="note">Both platforms skew 25–34 and male, which tracks with a PC-building audience already comparing parts, not just browsing — frame pitches around that. TikTok's top geography (Brazil) differs from YouTube's (US), worth flagging to a brand that cares about regional reach. Purchase intent is your own framing point, not a platform metric — keep it if you believe it, cut it if you'd rather lead with the numbers alone. Instagram will be added once that data's available.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">04 — Track record</p>
+    <h2>Past collabs</h2>
+    <div class="collab-grid">
+      <div class="collab-card">
+        <div class="brand placeholder">Brand name</div>
+        <div class="metric placeholder">0.0M views · 00% engagement</div>
+        <div class="desc">One line on the deliverable — e.g. dedicated build video featuring their GPU.</div>
+      </div>
+      <div class="collab-card">
+        <div class="brand placeholder">Brand name</div>
+        <div class="metric placeholder">0.0M views · 00% engagement</div>
+        <div class="desc">One line on the deliverable and result.</div>
+      </div>
+      <div class="collab-card">
+        <div class="brand placeholder">Brand name</div>
+        <div class="metric placeholder">0.0M views · 00% engagement</div>
+        <div class="desc">One line on the deliverable and result.</div>
+      </div>
+    </div>
+    <p class="note">No past collabs yet? Cut this section for your first few pitches, or replace it with 2–3 of your best-performing organic videos and their view counts instead.</p>
+  </section>
+
+  <footer>
+    <div class="contact-list">
+      <a href="mailto:therealshugeycolabs@gmail.com">therealshugeycolabs@gmail.com</a>
+      <span>tiktok.com/@therealshugey</span>
+      <span>instagram.com/@therealshugey</span>
+      <span>youtube.com/@therealshugey</span>
+    </div>
+    <div class="rev">Last updated <span class="placeholder">Month Year</span></div>
+  </footer>
+
+</div>
+</body>
+</html>
