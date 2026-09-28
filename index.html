@@ -1,573 +1,397 @@
 <!doctype html>
 <html lang="en">
-<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shugey Media Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+/* ============================================================
+   JAH / @therealshugey — MEDIA KIT
+   Same system as the UGC kit: clean dark layout, one warm accent.
+   ============================================================ */
+:root{
+  color-scheme: dark;
+  --bg:#0A0B0F;
+  --panel:#12141B;
+  --line:#222634;
+  --text:#ECEFF5;
+  --muted:#939AAD;
+  --accent:#FFB25B;
+  --accent-ink:#1A1003;
 
-  :root {
-    --paper: #f6f4ee;
-    --paper-raised: #fbfaf6;
-    --ink: #1a1d1f;
-    --muted: #6b6558;
-    --line: #c9c4b8;
-    --accent: #c6672b;
-    --accent-ink: #ffffff;
-    --accent2: #3d7a6b;
-    --tag-bg: #ece7db;
-    --shadow: 0 1px 0 rgba(26,29,31,0.06);
-  }
+  --f-name:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #14171a;
-      --paper-raised: #1b1f22;
-      --ink: #ede9e0;
-      --muted: #9b968c;
-      --line: #33383d;
-      --accent: #e08a4a;
-      --accent-ink: #14171a;
-      --accent2: #5fa893;
-      --tag-bg: #22262a;
-      --shadow: 0 1px 0 rgba(0,0,0,0.3);
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #14171a;
-    --paper-raised: #1b1f22;
-    --ink: #ede9e0;
-    --muted: #9b968c;
-    --line: #33383d;
-    --accent: #e08a4a;
-    --accent-ink: #14171a;
-    --accent2: #5fa893;
-    --tag-bg: #22262a;
-    --shadow: 0 1px 0 rgba(0,0,0,0.3);
-  }
+  --gap-s:.75rem; --gap-m:1.25rem; --gap-l:2rem; --gap-xl:3.5rem;
+  --wrap:1040px;
+  --radius:12px;
+}
 
-  * { box-sizing: border-box; }
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--f-body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:clamp(16px,4vw,36px)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+p{margin:0;max-width:62ch}
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1.15}
+h2{font-size:clamp(1.35rem,2.6vw,1.75rem);font-weight:700;letter-spacing:-.01em}
+h3{font-size:1.02rem;font-weight:600}
+.label{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+.num{font-variant-numeric:tabular-nums}
 
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
-    line-height: 1.55;
-  }
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(2.5rem,7vw,4.5rem) var(--gap-l)}
+.hero .wrap{display:grid;gap:var(--gap-m)}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:var(--gap-m);flex-wrap:wrap}
+.avatar{
+  width:176px;height:176px;flex:none;border-radius:50%;object-fit:cover;
+  border:3px solid var(--line);box-shadow:0 0 0 5px var(--bg),0 14px 36px -12px #FFB25B66;
+}
+.name{font-family:var(--f-name);font-weight:700;font-size:clamp(2.6rem,8vw,4.6rem);letter-spacing:-.02em;line-height:1}
+.handle{font-family:var(--f-mono);font-size:.9rem;color:var(--accent)}
+.intro{font-size:clamp(1.05rem,1.8vw,1.25rem);color:#CDD2DE}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:0;padding:0}
+.chips li{font-size:.85rem;padding:.35rem .8rem;border:1px solid var(--line);border-radius:999px;color:var(--text)}
+.facts{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;font-family:var(--f-mono);font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:var(--gap-s)}
+.facts b{color:var(--text);font-weight:500}
+.cta-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.btn{font:600 .92rem var(--f-body);display:inline-flex;align-items:center;gap:.45rem;padding:.75rem 1.2rem;border-radius:999px;text-decoration:none;cursor:pointer;border:0;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
-  .sheet {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 56px 24px 72px;
-  }
+/* ---------- sections ---------- */
+section{padding-block:var(--gap-xl) 0}
+.sec-head{display:grid;gap:.4rem;margin-bottom:var(--gap-l)}
+.sec-head p{color:var(--muted)}
 
-  .mono { font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+/* ---------- reach ---------- */
+.platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap-m)}
+.platform{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:var(--gap-m);display:grid;gap:var(--gap-s);align-content:start}
+.platform header{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.platform .at{font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
+.platform .big{font-family:var(--f-name);font-weight:700;font-size:2rem;line-height:1}
+.platform .unit{font-size:.85rem;color:var(--muted)}
+.platform dl{display:grid;grid-template-columns:1fr auto;gap:.45rem 1rem;margin:0;padding-top:var(--gap-s);border-top:1px solid var(--line);font-size:.92rem}
+.platform dt{color:var(--muted);white-space:nowrap}
+.platform dd{margin:0;text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.combined{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap-m);margin-top:var(--gap-l);border-block:1px solid var(--line);padding-block:var(--gap-m)}
+.combined div{display:grid;gap:.15rem}
+.combined b{font-family:var(--f-name);font-weight:700;font-size:clamp(1.4rem,3vw,1.9rem);color:var(--accent);line-height:1.1}
+.combined span{color:var(--muted);font-size:.88rem}
 
-  .placeholder {
-    background: var(--tag-bg);
-    color: var(--accent);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 1px 6px;
-    font-size: 0.85em;
-    white-space: nowrap;
-  }
+/* ---------- content ---------- */
+.lede{font-size:1.05rem;color:#CDD2DE;margin-bottom:var(--gap-l)}
+.grid2{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.grid2 li{background:var(--panel);padding:var(--gap-m);display:grid;gap:.35rem;align-content:start}
+.grid2 li.wide{grid-column:1/-1}
+.grid2 p{color:var(--muted);font-size:.95rem}
+.grid2 .highlight h3{color:var(--accent)}
 
-  /* header */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 16px;
-    flex-wrap: wrap;
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 20px;
-  }
-  .header-main {
-    display: flex;
-    align-items: flex-end;
-    gap: 16px;
-  }
-  .avatar {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--ink);
-    flex-shrink: 0;
-  }
-  .doc-id {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  h1.name {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 800;
-    font-size: clamp(32px, 6vw, 46px);
-    line-height: 1.02;
-    margin: 6px 0 0;
-    text-wrap: balance;
-  }
-  .handle {
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--accent);
-    font-size: 15px;
-    margin-top: 4px;
-  }
-  .tagline {
-    max-width: 280px;
-    text-align: right;
-    color: var(--muted);
-    font-size: 14px;
-  }
+/* ---------- audience ---------- */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
+.tbl table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:520px}
+.tbl th,.tbl td{text-align:left;padding:.8rem var(--gap-m);border-bottom:1px solid var(--line)}
+.tbl th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td:first-child{font-weight:600}
+.tbl td{font-variant-numeric:tabular-nums}
+.fine{color:var(--muted);font-size:.85rem;margin-top:var(--gap-s)}
 
-  /* pillars row */
-  .pillars {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 18px;
-  }
-  .pillar {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    background: var(--tag-bg);
-    border: 1px solid var(--line);
-    color: var(--muted);
-    padding: 5px 10px;
-    border-radius: 3px;
-  }
+/* ---------- standouts ---------- */
+.work{display:grid;grid-template-columns:repeat(3,minmax(0,260px));gap:var(--gap-l)}
+.clip{display:grid;gap:var(--gap-s);align-content:start}
+.frame{
+  position:relative;aspect-ratio:9/16;width:100%;max-width:100%;
+  border-radius:18px;overflow:hidden;border:1px solid var(--line);
+  background:
+    radial-gradient(120% 60% at 50% 0%,#FFB25B2b,transparent 60%),
+    linear-gradient(180deg,#171a23,#0d0f14);
+}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.poster{position:absolute;inset:0;display:grid;place-items:center;text-decoration:none;color:var(--text)}
+.poster .play{width:64px;height:64px;border-radius:50%;background:var(--accent);display:grid;place-items:center;box-shadow:0 10px 30px -8px #FFB25B99;transition:transform .15s ease}
+.poster:hover .play{transform:scale(1.06)}
+.poster .play::after{content:"";margin-left:5px;border-left:18px solid var(--accent-ink);border-top:11px solid transparent;border-bottom:11px solid transparent}
+.poster .tag{position:absolute;left:14px;bottom:14px;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.clip p{color:var(--muted);font-size:.9rem}
+.clip p a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--line)}
+.clip p a:hover{color:var(--accent);border-color:var(--accent)}
 
-  /* section headings */
-  .eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent2);
-    margin: 0 0 6px;
-  }
-  section { margin-top: 44px; }
-  h2 {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    margin: 0 0 14px;
-    text-wrap: balance;
-  }
+/* ---------- contact ---------- */
+.contact{margin-top:var(--gap-xl);border:1px solid var(--line);border-radius:18px;padding:clamp(1.4rem,5vw,2.8rem);display:grid;gap:var(--gap-m);
+  background:radial-gradient(520px 260px at 100% 0%,#FFB25B1c,transparent 70%),var(--panel)}
+.email-row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.email{font-family:var(--f-mono);font-size:clamp(.88rem,2.4vw,1.15rem);user-select:all;word-break:break-all}
+.toast{font-family:var(--f-mono);font-size:.8rem;color:var(--accent)}
+.socials{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;font-size:.92rem}
+.socials a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.socials a:hover{color:var(--accent);border-color:var(--accent)}
+footer{padding-block:var(--gap-l);color:var(--muted);font-size:.8rem}
 
-  /* stats grid */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .stat {
-    background: var(--paper-raised);
-    padding: 18px 16px;
-  }
-  .stat .num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 600;
-    font-size: 26px;
-    font-variant-numeric: tabular-nums;
-    color: var(--accent);
-  }
-  .stat .label {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  /* platform breakdown */
-  .platform-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-  .platform-card {
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    background: var(--paper-raised);
-    box-shadow: var(--shadow);
-    padding: 16px;
-  }
-  .platform-card .ptop {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 10px;
-    margin-bottom: 12px;
-  }
-  .platform-card .pname {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.02em;
-  }
-  .platform-card .phandle {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--accent2);
-  }
-  .platform-card .prow {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 4px 0;
-  }
-  .platform-card .prow .k {
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .platform-card .prow .v {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    font-variant-numeric: tabular-nums;
-  }
-  .stats-label {
-    font-size: 12px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin: 22px 0 8px;
-  }
-
-  .intent-line {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin: 16px 0 0;
-  }
-  .intent-line .k {
-    font-size: 12px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .intent-line .v {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 15px;
-  }
-
-  p { margin: 0 0 12px; color: var(--ink); }
-  p.lede { color: var(--muted); }
-
-  /* signature format callout */
-  .callout {
-    border-left: 3px solid var(--accent);
-    background: var(--tag-bg);
-    border-radius: 0 6px 6px 0;
-    padding: 14px 18px;
-    margin: 4px 0 20px;
-  }
-  .callout .callout-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
-  .callout p { margin: 0; }
-
-  /* content pillars detail */
-  .pillar-list {
-    display: grid;
-    gap: 14px;
-  }
-  .pillar-row {
-    display: grid;
-    grid-template-columns: 132px 1fr;
-    gap: 14px;
-    align-items: baseline;
-    border-top: 1px solid var(--line);
-    padding-top: 12px;
-  }
-  .pillar-row:first-child { border-top: none; padding-top: 0; }
-  .pillar-row .k {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12.5px;
-    color: var(--accent2);
-  }
-  @media (max-width: 480px) {
-    .pillar-row { grid-template-columns: 1fr; gap: 4px; }
-  }
-
-  /* audience */
-  .audience-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 20px;
-  }
-  .audience-item .k {
-    font-size: 12px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .audience-item .v {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 17px;
-    margin-top: 3px;
-  }
-
-  /* collabs */
-  .collab-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
-  }
-  .collab-card {
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 16px;
-    background: var(--paper-raised);
-    box-shadow: var(--shadow);
-  }
-  .collab-card .brand {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-  }
-  .collab-card .metric {
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--accent2);
-    font-size: 13px;
-    margin-top: 6px;
-  }
-  .collab-card .desc {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-  .collab-card a {
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent);
-  }
-
-  /* rates table */
-  table.rates {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
-  table.rates th, table.rates td {
-    text-align: left;
-    padding: 11px 10px;
-    border-bottom: 1px solid var(--line);
-  }
-  table.rates th {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 500;
-  }
-  table.rates td.price {
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--accent);
-    white-space: nowrap;
-  }
-  .tbl-wrap { overflow-x: auto; }
-
-  .note {
-    font-size: 12.5px;
-    color: var(--muted);
-    margin-top: 10px;
-  }
-
-  /* footer / contact */
-  footer {
-    margin-top: 56px;
-    border-top: 2px solid var(--ink);
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .contact-list {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-  }
-  .contact-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); }
-  .rev {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-  }
+/* ---------- phone: shorter copy, single column ---------- */
+.short{display:none}
+@media (max-width:760px){
+  .platforms{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .long{display:none}
+  .short{display:inline}
+  .grid2{grid-template-columns:1fr}
+  .combined{grid-template-columns:repeat(3,1fr);gap:var(--gap-s)}
+  .combined span{font-size:.78rem}
+  .work{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-s)}
+  .clip h3{font-size:.88rem}
+  .clip p{font-size:.78rem}
+  .poster .play{width:40px;height:40px}
+  .poster .play::after{border-left-width:12px;border-top-width:8px;border-bottom-width:8px;margin-left:3px}
+  .poster .tag{display:none}
+  .avatar{width:112px;height:112px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-</head>
-<body>
 
-<div class="sheet">
-
-  <header>
-    <div class="header-main">
-      <img class="avatar" src="data:image/jpeg;base64,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" alt="Jah">
-      <div>
-        <div class="doc-id">Media Kit &nbsp;/&nbsp; Rev. September 27, 2026</div>
-        <h1 class="name">Jah</h1>
-        <div class="handle">@therealshugey</div>
+<main>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="label">Media kit &middot; Updated Sep 27, 2026</p>
+      <div class="hero-top">
+        <div>
+          <h1 class="name">Jah</h1>
+          <span class="handle">@therealshugey</span>
+        </div>
+        <img class="avatar" src="assets/jah.jpg" alt="Jah, @therealshugey" width="176" height="176">
+      </div>
+      <p class="intro">PC builds, hardware breakdowns, and gaming optimization for an audience that actually buys parts.</p>
+      <ul class="chips">
+        <li>PC builds</li>
+        <li>Hardware &amp; parts</li>
+        <li>Gaming optimization</li>
+        <li>Tech news</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Work with me</a>
+        <a class="btn btn-ghost" href="#reach">See the numbers</a>
+      </div>
+      <div class="facts">
+        <span><b class="num">1.7K</b> followers</span>
+        <span><b class="num">69.9K</b> views / 28 days</span>
+        <span><b>5</b> posts a week</span>
       </div>
     </div>
-    <div class="tagline">PC builds, hardware breakdowns, and gaming optimization for an audience that actually buys parts.</div>
   </header>
 
-  <div class="pillars">
-    <span class="pillar">PC Builds</span>
-    <span class="pillar">Hardware &amp; Parts</span>
-    <span class="pillar">Gaming Optimization</span>
-    <span class="pillar">Tech News</span>
-  </div>
+  <!-- REACH -->
+  <section id="reach">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Reach</p>
+        <h2>Platforms</h2>
+      </div>
+      <div class="platforms">
+        <article class="platform">
+          <header><h3>TikTok</h3><span class="at">@therealshugey</span></header>
+          <div><div class="big num">1.3K</div><span class="unit">followers</span></div>
+          <dl>
+            <dt>Views, 28 days</dt><dd>15.0K</dd>
+            <dt>Interactions, 28 days</dt><dd>939</dd>
+          </dl>
+        </article>
+        <article class="platform">
+          <header><h3>Instagram</h3><span class="at">@therealshugey</span></header>
+          <div><div class="big num">137</div><span class="unit">followers</span></div>
+          <dl>
+            <dt>Views, 28 days</dt><dd>29.7K</dd>
+            <dt>Avg. reel views</dt><dd>~2.0K</dd>
+          </dl>
+        </article>
+        <article class="platform">
+          <header><h3>YouTube</h3><span class="at">@therealshugey</span></header>
+          <div><div class="big num">264</div><span class="unit">subscribers</span></div>
+          <dl>
+            <dt>Views, 28 days</dt><dd>25.2K</dd>
+            <dt>Format</dt><dd>Shorts + long-form</dd>
+          </dl>
+        </article>
+      </div>
+      <div class="combined">
+        <div><b class="num">1.7K</b><span>Total followers, all 3 platforms</span></div>
+        <div><b class="num">69.9K</b><span>Views in 28 days, all 3 platforms</span></div>
+        <div><b>5/wk</b><span>Posting cadence</span></div>
+      </div>
+    </div>
+  </section>
 
-  <section>
-    <p class="eyebrow">01 / Reach</p>
-    <h2>Platforms</h2>
-    <div class="platform-grid">
-      <div class="platform-card">
-        <div class="ptop">
-          <span class="pname">TikTok</span>
-          <span class="phandle">@therealshugey</span>
+  <!-- CONTENT -->
+  <section id="content">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Content</p>
+        <h2>What I make</h2>
+      </div>
+      <p class="lede">
+        <span class="long">Short-form videos built around real builds and real hardware decisions, not unboxings for the sake of it. People watch because they're actually deciding what to buy.</span>
+        <span class="short">Real builds and real hardware decisions. People watch because they're deciding what to buy.</span>
+      </p>
+      <ul class="grid2">
+        <li class="wide highlight">
+          <h3>The signature bit</h3>
+          <p>
+            <span class="long">Every video, I use a different object as my "microphone," like a stick of RAM, a wrench, or a controller. A brand's product can be that prop: in hand and on screen for the entire video, not a 3-second cutaway or an end-card mention. The product becomes part of the bit instead of getting shoehorned in.</span>
+            <span class="short">Your product becomes my "mic," on screen for the whole video instead of a quick cutaway.</span>
+          </p>
+        </li>
+        <li>
+          <h3>PC builds</h3>
+          <p>
+            <span class="long">Full and budget build videos, covering part selection, compatibility calls, and the tradeoffs, not just a timelapse.</span>
+            <span class="short">Full and budget builds, with the tradeoffs explained.</span>
+          </p>
+        </li>
+        <li>
+          <h3>Hardware</h3>
+          <p>
+            <span class="long">GPU, CPU, and cooling breakdowns, comparisons, and honest first impressions on new releases.</span>
+            <span class="short">GPU, CPU and cooling breakdowns and first impressions.</span>
+          </p>
+        </li>
+        <li>
+          <h3>Optimization</h3>
+          <p>
+            <span class="long">Settings, BIOS tweaks, and performance tuning that gets a viewer measurably better FPS or thermals.</span>
+            <span class="short">Settings and BIOS tweaks for better FPS and thermals.</span>
+          </p>
+        </li>
+        <li>
+          <h3>Tech news</h3>
+          <p>
+            <span class="long">Fast takes on industry announcements, launches, and the stuff PC people are actually arguing about.</span>
+            <span class="short">Fast takes on launches and industry news.</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section id="audience">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Audience &middot; last 28 days</p>
+        <h2>Who's watching</h2>
+      </div>
+      <div class="tbl">
+        <table>
+          <thead>
+            <tr><th>Platform</th><th>Top age</th><th>Gender split</th><th>Top country</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>YouTube</td><td>25&ndash;34 &middot; 38.0%</td><td>95.0% M / 4.9% F</td><td>US &middot; 50.6%</td></tr>
+            <tr><td>TikTok</td><td>25&ndash;34 &middot; 46.8%</td><td>63% M / 33% F / 4% other</td><td>Brazil &middot; 31.0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">
+        <span class="long">Both platforms skew 25 to 34 and male, consistent with a PC-building audience already comparing parts. Instagram's demographic breakdown wasn't available at pull time; its view numbers above are current as of September 27, 2026.</span>
+        <span class="short">Both skew 25 to 34 and male: a PC audience already comparing parts.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- STANDOUTS -->
+  <section id="standouts">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Best content</p>
+        <h2>Recent standouts</h2>
+      </div>
+      <div class="work">
+        <article class="clip">
+          <div class="frame" data-tiktok="7619006721985383693">
+            <a class="poster" href="https://www.tiktok.com/@therealshugey/video/7619006721985383693" aria-label="Watch on TikTok">
+              <span class="play" aria-hidden="true"></span>
+              <span class="tag">TikTok &#8599;</span>
+            </a>
+          </div>
+          <h3>TikTok + Shorts</h3>
+          <p><span class="long">Same video posted natively to both, and it did well on each. </span><a href="https://www.youtube.com/shorts/kv-_jw6Peuw">YouTube version</a></p>
+        </article>
+        <article class="clip">
+          <div class="frame" data-tiktok="7619293414797987085">
+            <a class="poster" href="https://www.tiktok.com/@therealshugey/video/7619293414797987085" aria-label="Watch on TikTok">
+              <span class="play" aria-hidden="true"></span>
+              <span class="tag">TikTok &#8599;</span>
+            </a>
+          </div>
+          <h3>TikTok</h3>
+          <p>@therealshugey</p>
+        </article>
+        <article class="clip">
+          <div class="frame">
+            <a class="poster" href="https://www.instagram.com/reel/DdBqmQeiIM5/" aria-label="Watch on Instagram">
+              <span class="play" aria-hidden="true"></span>
+              <span class="tag">Instagram &#8599;</span>
+            </a>
+          </div>
+          <h3>Instagram Reel</h3>
+          <p>@therealshugey</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <p class="label">Contact</p>
+        <h2>Let's put your product in front of people buying parts.</h2>
+        <div class="email-row">
+          <span class="email" id="email">therealshugeycolabs@gmail.com</span>
+          <button class="btn btn-primary" id="copy" type="button">Copy email</button>
+          <span class="toast" id="toast" role="status" aria-live="polite"></span>
         </div>
-        <div class="prow"><span class="k">Followers</span><span class="v">1.3K</span></div>
-        <div class="prow"><span class="k">Views, last 28 days</span><span class="v">15.0K</span></div>
-        <div class="prow"><span class="k">Interactions, last 28 days</span><span class="v">939</span></div>
-      </div>
-      <div class="platform-card">
-        <div class="ptop">
-          <span class="pname">Instagram</span>
-          <span class="phandle">@therealshugey</span>
+        <div class="socials">
+          <a href="https://www.tiktok.com/@therealshugey">TikTok</a>
+          <a href="https://www.instagram.com/therealshugey/">Instagram</a>
+          <a href="https://www.youtube.com/@therealshugey">YouTube</a>
+          <a href="https://therealshugeymedia.tech/ugc">UGC kit &amp; rates</a>
         </div>
-        <div class="prow"><span class="k">Followers</span><span class="v">137</span></div>
-        <div class="prow"><span class="k">Views, last 28 days</span><span class="v">29.7K</span></div>
-        <div class="prow"><span class="k">Avg. reel views</span><span class="v">~2.0K</span></div>
-      </div>
-      <div class="platform-card">
-        <div class="ptop">
-          <span class="pname">YouTube</span>
-          <span class="phandle">@therealshugey</span>
-        </div>
-        <div class="prow"><span class="k">Subscribers</span><span class="v">264</span></div>
-        <div class="prow"><span class="k">Views, last 28 days</span><span class="v">25.2K</span></div>
-        <div class="prow"><span class="k">Format</span><span class="v">Shorts + long-form</span></div>
-      </div>
-    </div>
-    <p class="stats-label">Combined</p>
-    <div class="stats">
-      <div class="stat">
-        <div class="num">1.7K</div>
-        <div class="label">Total followers/subs, all 3 platforms</div>
-      </div>
-      <div class="stat">
-        <div class="num">69.9K</div>
-        <div class="label">28-day views, all 3 platforms</div>
-      </div>
-      <div class="stat">
-        <div class="num">5/wk</div>
-        <div class="label">Posting cadence</div>
       </div>
     </div>
   </section>
+</main>
 
-  <section>
-    <p class="eyebrow">02 / Content</p>
-    <h2>What I make</h2>
-    <p class="lede">Short-form videos built around real builds and real hardware decisions, not unboxings for the sake of it. People watch because they're actually deciding what to buy.</p>
-    <div class="callout">
-      <div class="callout-label">The signature bit</div>
-      <p>Every video, I use a different object as my "microphone," like a stick of RAM, a wrench, a controller, whatever fits that video. A brand's product can be that prop: it's in-hand and on-screen for the entire video, not a 3-second cutaway or an end-card mention. It fits the format naturally too, since the product becomes part of the bit instead of getting shoehorned in.</p>
-    </div>
-    <div class="pillar-list">
-      <div class="pillar-row">
-        <div class="k">PC BUILDS</div>
-        <div>Full and budget build videos, covering part selection, compatibility calls, and the tradeoffs, not just a timelapse.</div>
-      </div>
-      <div class="pillar-row">
-        <div class="k">HARDWARE</div>
-        <div>GPU/CPU/cooling breakdowns, comparisons, and honest first-impressions on new releases.</div>
-      </div>
-      <div class="pillar-row">
-        <div class="k">OPTIMIZATION</div>
-        <div>Settings, BIOS tweaks, and performance tuning that gets a viewer measurably better FPS or thermals.</div>
-      </div>
-      <div class="pillar-row">
-        <div class="k">TECH NEWS</div>
-        <div>Fast takes on industry announcements, launches, and the stuff PC people are actually arguing about.</div>
-      </div>
-    </div>
-  </section>
+<footer>
+  <div class="wrap">Jah Caffie-Speed &middot; Last updated September 27, 2026</div>
+</footer>
 
-  <section>
-    <p class="eyebrow">03 / Audience <span class="placeholder">last 28 days, by platform</span></p>
-    <h2>Who's watching</h2>
-    <div class="tbl-wrap">
-      <table class="rates">
-        <thead>
-          <tr><th>Platform</th><th>Top age bracket</th><th>Gender split</th><th>Top geography</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>YouTube</td><td>25–34 · 38.0%</td><td>95.0% M / 4.9% F</td><td>US · 50.6%</td></tr>
-          <tr><td>TikTok</td><td>25–34 · 46.8%</td><td>63% M / 33% F / 4% other</td><td>Brazil · 31.0%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">Both platforms skew 25–34 and male, consistent with a PC-building audience already comparing parts. TikTok's top geography (Brazil) differs from YouTube's (US). Instagram's age/gender/geography breakdown isn't in this table yet, that report wasn't available at pull time; Instagram's view and reach numbers above are current as of September 27, 2026.</p>
-  </section>
+<script>
+/* On your own site, swap the TikTok posters for live players. */
+if(/therealshugeymedia\.tech$/.test(location.hostname)){
+  document.querySelectorAll('.frame[data-tiktok]').forEach(f=>{
+    f.innerHTML='<iframe src="https://www.tiktok.com/player/v1/'+f.dataset.tiktok+'" allow="fullscreen" allowfullscreen loading="lazy" title="TikTok video"></iframe>';
+  });
+}
 
-  <section>
-    <p class="eyebrow">04 / Best content</p>
-    <h2>Recent standouts</h2>
-    <div class="collab-grid">
-      <div class="collab-card">
-        <div class="brand">TikTok / YouTube Shorts</div>
-        <div class="metric">Same video, posted natively to both, and it did well on each platform</div>
-        <div class="desc"><a href="https://www.tiktok.com/@therealshugey/video/7619006721985383693" target="_blank" rel="noopener">Watch on TikTok</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/shorts/kv-_jw6Peuw" target="_blank" rel="noopener">Watch on YouTube</a></div>
-      </div>
-      <div class="collab-card">
-        <div class="brand">TikTok</div>
-        <div class="metric">@therealshugey</div>
-        <div class="desc"><a href="https://www.tiktok.com/@therealshugey/video/7619293414797987085" target="_blank" rel="noopener">Watch on TikTok</a></div>
-      </div>
-      <div class="collab-card">
-        <div class="brand">Instagram</div>
-        <div class="metric">@therealshugey</div>
-        <div class="desc"><a href="https://www.instagram.com/reel/DdBqmQeiIM5/" target="_blank" rel="noopener">Watch on Instagram</a></div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="contact-list">
-      <a href="mailto:therealshugeycolabs@gmail.com">therealshugeycolabs@gmail.com</a>
-      <a href="https://www.tiktok.com/@therealshugey" target="_blank" rel="noopener">tiktok.com/@therealshugey</a>
-      <a href="https://www.instagram.com/therealshugey/" target="_blank" rel="noopener">instagram.com/@therealshugey</a>
-      <a href="https://www.youtube.com/@therealshugey" target="_blank" rel="noopener">youtube.com/@therealshugey</a>
-    </div>
-    <div class="rev">Jah Caffie-Speed &nbsp;·&nbsp; Last updated September 27, 2026</div>
-  </footer>
-
-</div>
-
-</body>
-</html>
+/* Copy email */
+(function(){
+  const btn=document.getElementById('copy'),toast=document.getElementById('toast'),em=document.getElementById('email');
+  btn.addEventListener('click',()=>{
+    const done=()=>{toast.textContent='Copied';setTimeout(()=>toast.textContent='',2000)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(em);const s=getSelection();s.removeAllRanges();s.addRange(r);toast.textContent='Selected, press Ctrl/Cmd+C'};
+    try{navigator.clipboard.writeText(em.textContent.trim()).then(done,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
