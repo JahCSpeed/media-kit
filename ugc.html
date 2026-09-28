@@ -1,0 +1,363 @@
+<meta charset="utf-8">
+<title>Shugey UGC Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ============================================================
+   JAH / @therealshugey — UGC KIT
+   Clean dark layout, one warm accent. Edit the tokens to re-skin.
+
+   TWO VERSIONS, ONE FILE
+   - Default (brand reached out to you): no Process section.
+   - Pitch version: add #pitch to the link, e.g. yoursite.com/ugc#pitch
+   ============================================================ */
+:root{
+  color-scheme: dark;
+  --bg:#0A0B0F;
+  --panel:#12141B;
+  --line:#222634;
+  --text:#ECEFF5;
+  --muted:#939AAD;
+  --accent:#FFB25B;
+  --accent-ink:#1A1003;
+
+  --f-name:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --gap-s:.75rem; --gap-m:1.25rem; --gap-l:2rem; --gap-xl:3.5rem;
+  --wrap:1040px;
+  --radius:12px;
+}
+
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--f-body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:clamp(16px,4vw,36px)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+p{margin:0;max-width:62ch}
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1.15}
+h2{font-size:clamp(1.35rem,2.6vw,1.75rem);font-weight:700;letter-spacing:-.01em}
+h3{font-size:1.02rem;font-weight:600}
+.label{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(2.5rem,7vw,4.5rem) var(--gap-l)}
+.hero .wrap{display:grid;gap:var(--gap-m)}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:var(--gap-m);flex-wrap:wrap}
+.avatar{
+  width:176px;height:176px;flex:none;border-radius:50%;object-fit:cover;
+  border:3px solid var(--line);box-shadow:0 0 0 5px var(--bg),0 14px 36px -12px #FFB25B66;
+}
+.name{font-family:var(--f-name);font-weight:700;font-size:clamp(2.6rem,8vw,4.6rem);letter-spacing:-.02em;line-height:1}
+.handle{font-family:var(--f-mono);font-size:.9rem;color:var(--accent)}
+.intro{font-size:clamp(1.05rem,1.8vw,1.25rem);color:#CDD2DE}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:0;padding:0}
+.chips li{font-size:.85rem;padding:.35rem .8rem;border:1px solid var(--line);border-radius:999px;color:var(--text)}
+.facts{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;font-family:var(--f-mono);font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:var(--gap-s)}
+.facts b{color:var(--text);font-weight:500}
+.cta-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.btn{font:600 .92rem var(--f-body);display:inline-flex;align-items:center;gap:.45rem;padding:.75rem 1.2rem;border-radius:999px;text-decoration:none;cursor:pointer;border:0;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- sections ---------- */
+section{padding-block:var(--gap-xl) 0}
+.sec-head{display:grid;gap:.4rem;margin-bottom:var(--gap-l)}
+.sec-head p{color:var(--muted)}
+
+/* ---------- recent work ---------- */
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:var(--gap-l)}
+.clip{display:grid;gap:var(--gap-s);align-content:start}
+.frame{
+  position:relative;aspect-ratio:9/16;width:100%;max-width:100%;
+  border-radius:18px;overflow:hidden;border:1px solid var(--line);
+  background:
+    radial-gradient(120% 60% at 50% 0%,#FFB25B2b,transparent 60%),
+    linear-gradient(180deg,#171a23,#0d0f14);
+}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.poster{position:absolute;inset:0;display:grid;place-items:center;text-decoration:none;color:var(--text)}
+.poster .play{width:64px;height:64px;border-radius:50%;background:var(--accent);display:grid;place-items:center;box-shadow:0 10px 30px -8px #FFB25B99;transition:transform .15s ease}
+.poster:hover .play{transform:scale(1.06)}
+.poster .play::after{content:"";margin-left:5px;border-left:18px solid var(--accent-ink);border-top:11px solid transparent;border-bottom:11px solid transparent}
+.poster .tag{position:absolute;left:14px;bottom:14px;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.clip p{color:var(--muted);font-size:.92rem}
+.organic{margin-top:var(--gap-m);font-size:.9rem;color:var(--muted)}
+.organic a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--line)}
+.organic a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ---------- why ---------- */
+.why{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.why li{background:var(--panel);padding:var(--gap-m) var(--gap-m) calc(var(--gap-m) + .1rem);display:grid;gap:.35rem;align-content:start}
+.why li.wide{grid-column:1/-1}
+.why p{color:var(--muted);font-size:.95rem}
+.why .highlight h3{color:var(--accent)}
+
+/* ---------- deliverables + rates ---------- */
+.split{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--gap-l);align-items:start}
+.specs{display:grid;grid-template-columns:auto 1fr;gap:.7rem 1.4rem;margin:0}
+.specs dt{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:.2rem}
+.specs dd{margin:0}
+.rates{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:var(--gap-m);display:grid;gap:var(--gap-s)}
+.rates table{width:100%;border-collapse:collapse;font-size:.96rem}
+.rates td{padding:.6rem 0;border-bottom:1px solid var(--line)}
+.rates tr:last-child td{border-bottom:0}
+.rates td:last-child{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:1rem}
+.rates tr.main td{font-weight:600}
+.rates tr.main td:last-child{color:var(--accent);font-size:1.05rem}
+.rates .sub td{color:var(--muted)}
+
+/* ---------- process (pitch version only) ---------- */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap-m);counter-reset:step}
+.steps li{counter-increment:step;display:grid;gap:.3rem;border-top:2px solid var(--line);padding-top:var(--gap-s)}
+.steps li::before{content:counter(step);font-family:var(--f-mono);font-size:.78rem;color:var(--accent)}
+.steps p{color:var(--muted);font-size:.93rem}
+#process{display:none}
+body.pitch #process{display:block}
+
+/* ---------- contact ---------- */
+.contact{margin-top:var(--gap-xl);border:1px solid var(--line);border-radius:18px;padding:clamp(1.4rem,5vw,2.8rem);display:grid;gap:var(--gap-m);
+  background:radial-gradient(520px 260px at 100% 0%,#FFB25B1c,transparent 70%),var(--panel)}
+.email-row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.email{font-family:var(--f-mono);font-size:clamp(.88rem,2.4vw,1.15rem);user-select:all;word-break:break-all}
+.toast{font-family:var(--f-mono);font-size:.8rem;color:var(--accent)}
+footer{padding-block:var(--gap-l);color:var(--muted);font-size:.8rem}
+
+/* ---------- phone: shorter copy, single column ---------- */
+.short{display:none}
+@media (max-width:640px){
+  body{font-size:16px}
+  .long{display:none}
+  .short{display:inline}
+  .work{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-s)}
+  .clip p{font-size:.82rem}
+  .why{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .specs{grid-template-columns:1fr;gap:.15rem}
+  .specs dd{margin-bottom:.6rem}
+  .poster .play{width:48px;height:48px}
+  .poster .play::after{border-left-width:14px;border-top-width:9px;border-bottom-width:9px;margin-left:4px}
+  .avatar{width:112px;height:112px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<main>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="label">UGC portfolio &middot; Fall 2026</p>
+      <div class="hero-top">
+        <div>
+          <h1 class="name">Jah</h1>
+          <span class="handle">@therealshugey</span>
+        </div>
+        <img class="avatar" src="assets/jah.jpg" alt="Jah, @therealshugey" width="104" height="104">
+      </div>
+      <p class="intro">Ad-ready vertical videos for consumer brands, made for your ads and your pages.</p>
+      <ul class="chips">
+        <li>Product demos</li>
+        <li>Unboxings</li>
+        <li>Problem / solution</li>
+        <li>Talking-head reviews</li>
+        <li>Lifestyle / routine</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Work with me</a>
+        <a class="btn btn-ghost" href="#rates">See rates</a>
+      </div>
+      <div class="facts">
+        <span>From <b class="num">$100</b>/video</span>
+        <span>Draft in <b>7 days</b></span>
+        <span>Raw footage <b>included</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- RECENT WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Recent UGC work</p>
+        <h2>Sample videos</h2>
+      </div>
+      <div class="work">
+        <article class="clip">
+          <div class="frame" data-tiktok="7619293414797987085">
+            <a class="poster" href="https://www.tiktok.com/@therealshugey/video/7619293414797987085" aria-label="Watch the product demo on TikTok">
+              <span class="play" aria-hidden="true"></span>
+              <span class="tag">Watch on TikTok &#8599;</span>
+            </a>
+          </div>
+          <h3>Product demo</h3>
+          <p>Hook, feature walkthrough, call to action</p>
+        </article>
+        <article class="clip">
+          <div class="frame" data-tiktok="7611907646018293006">
+            <a class="poster" href="https://www.tiktok.com/@therealshugey/video/7611907646018293006" aria-label="Watch the problem / solution video on TikTok">
+              <span class="play" aria-hidden="true"></span>
+              <span class="tag">Watch on TikTok &#8599;</span>
+            </a>
+          </div>
+          <h3>Problem / solution</h3>
+          <p>Relatable pain point, product fixes it</p>
+        </article>
+      </div>
+      <p class="organic">More on my channels:
+        <a href="https://www.tiktok.com/@therealshugey">TikTok</a> &middot;
+        <a href="https://www.instagram.com/therealshugey">Instagram</a> &middot;
+        <a href="https://www.youtube.com/@therealshugey">YouTube</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Why brands work with me</p>
+        <h2>What you get beyond the video</h2>
+      </div>
+      <ul class="why">
+        <li class="wide highlight">
+          <h3>Your product becomes the prop</h3>
+          <p>
+            <span class="long">On my own channels I talk into a different object as my "microphone" in every video. For UGC, your product can be that prop, so it stays in hand and on screen from the first frame to the last.</span>
+            <span class="short">My signature bit: your product is my "mic," on screen the whole video.</span>
+          </p>
+        </li>
+        <li>
+          <h3>Retail and tech background</h3>
+          <p>
+            <span class="long">I worked at Best Buy and now work in tech, so I know how shoppers compare products and the questions they ask before they buy.</span>
+            <span class="short">Ex-Best Buy, now working in tech. I know what shoppers ask.</span>
+          </p>
+        </li>
+        <li>
+          <h3>Short-form every week</h3>
+          <p>
+            <span class="long">I make short-form videos every week, so hooks, pacing, and editing for TikTok and Reels are second nature.</span>
+            <span class="short">I post weekly. Hooks and pacing are second nature.</span>
+          </p>
+        </li>
+        <li>
+          <h3>Clear on camera</h3>
+          <p>
+            <span class="long">I'm used to explaining products clearly on camera, from spec-heavy tech to everyday items, in plain words people trust.</span>
+            <span class="short">Spec-heavy tech or everyday items, explained plainly.</span>
+          </p>
+        </li>
+        <li>
+          <h3>Open to any consumer brand</h3>
+          <p>
+            <span class="long">Tech and gadgets, home and kitchen, fitness, personal care, apparel, pets, food and drink.</span>
+            <span class="short">Tech, home, fitness, personal care, apparel, pets, food.</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES + RATES -->
+  <section id="rates">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Deliverables and rates</p>
+        <h2>What's included</h2>
+      </div>
+      <div class="split">
+        <dl class="specs">
+          <dt>Format</dt><dd>Vertical 9:16, 1080 × 1920, ready for TikTok, Reels, Shorts and Meta ads</dd>
+          <dt>Length</dt><dd>15 to 60 seconds, cut to your brief</dd>
+          <dt>Edit</dt><dd>Captioned version plus a clean version with no text</dd>
+          <dt>Raw footage</dt><dd>Included, so your team can recut it</dd>
+          <dt>Revisions</dt><dd>One round included</dd>
+          <dt>Turnaround</dt><dd>First draft within 7 days of the product arriving</dd>
+        </dl>
+        <div class="rates">
+          <p class="label">Rates (USD)</p>
+          <table>
+            <tbody>
+              <tr class="main"><td>Single UGC video</td><td>$100</td></tr>
+              <tr class="main"><td>3-video bundle</td><td>$275</td></tr>
+              <tr class="sub"><td>Extra hook variation</td><td>+$25</td></tr>
+              <tr class="sub"><td>Paid ad usage, 30 days</td><td>+$50</td></tr>
+              <tr class="sub"><td>Rush delivery</td><td>+$50</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS: shows only on the pitch version (#pitch) -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Process</p>
+        <h2>From brief to final files</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Brief</h3><p>You send the product, key points and any must-say lines.</p></li>
+        <li><h3>Ship</h3><p>Product ships to me in New Jersey, US.</p></li>
+        <li><h3>Draft</h3><p>First cut lands within 7 days of delivery.</p></li>
+        <li><h3>Final</h3><p>One round of revisions, then final files and raw footage.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <p class="label">Contact</p>
+        <h2>Send me the product and the brief.</h2>
+        <div class="email-row">
+          <span class="email" id="email">therealshugeycolabs@gmail.com</span>
+          <button class="btn btn-primary" id="copy" type="button">Copy email</button>
+          <span class="toast" id="toast" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Jah Caffie-Speed &middot; Updated September 2026</div>
+</footer>
+
+<script>
+/* Pitch version: add #pitch to the URL to show the Process section */
+function applyVersion(){document.body.classList.toggle('pitch',location.hash==='#pitch')}
+applyVersion(); addEventListener('hashchange',applyVersion);
+
+/* On your own site, swap the play-button posters for live TikTok players.
+   (Previews that block embedded players keep the link posters.) */
+if(/therealshugeymedia\.tech$/.test(location.hostname)){
+  document.querySelectorAll('.frame[data-tiktok]').forEach(f=>{
+    const id=f.dataset.tiktok;
+    f.innerHTML='<iframe src="https://www.tiktok.com/player/v1/'+id+'" allow="fullscreen" allowfullscreen loading="lazy" title="TikTok video"></iframe>';
+  });
+}
+
+/* Copy email */
+(function(){
+  const btn=document.getElementById('copy'),toast=document.getElementById('toast'),em=document.getElementById('email');
+  btn.addEventListener('click',()=>{
+    const done=()=>{toast.textContent='Copied';setTimeout(()=>toast.textContent='',2000)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(em);const s=getSelection();s.removeAllRanges();s.addRange(r);toast.textContent='Selected, press Ctrl/Cmd+C'};
+    try{navigator.clipboard.writeText(em.textContent.trim()).then(done,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
