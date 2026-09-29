@@ -76,7 +76,7 @@ section{padding-block:var(--gap-xl) 0}
 .sec-head p{color:var(--muted)}
 
 /* ---------- recent work ---------- */
-.work{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:var(--gap-l)}
+.work{display:grid;grid-template-columns:repeat(3,minmax(0,260px));gap:var(--gap-l)}
 .clip{display:grid;gap:var(--gap-s);align-content:start}
 .frame{
   position:relative;aspect-ratio:9/16;width:100%;max-width:100%;
@@ -140,15 +140,17 @@ footer{padding-block:var(--gap-l);color:var(--muted);font-size:.8rem}
   body{font-size:16px}
   .long{display:none}
   .short{display:inline}
-  .work{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-s)}
-  .clip p{font-size:.82rem}
+  .work{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-s)}
+  .clip h3{font-size:.88rem}
+  .clip p{font-size:.78rem}
+  .poster .tag{display:none}
   .why{grid-template-columns:1fr}
   .split{grid-template-columns:1fr}
   .steps{grid-template-columns:repeat(2,1fr)}
   .specs{grid-template-columns:1fr;gap:.15rem}
   .specs dd{margin-bottom:.6rem}
-  .poster .play{width:48px;height:48px}
-  .poster .play::after{border-left-width:14px;border-top-width:9px;border-bottom-width:9px;margin-left:4px}
+  .poster .play{width:40px;height:40px}
+  .poster .play::after{border-left-width:12px;border-top-width:8px;border-bottom-width:8px;margin-left:3px}
   .avatar{width:112px;height:112px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -213,6 +215,16 @@ footer{padding-block:var(--gap-l);color:var(--muted);font-size:.8rem}
           </div>
           <h3>Problem / solution</h3>
           <p>Relatable pain point, product fixes it</p>
+        </article>
+        <article class="clip">
+          <div class="frame">
+            <a class="poster" href="https://www.instagram.com/reel/Ddz4RcBETlb/" aria-label="Watch the before / after video on Instagram">
+              <span class="play" aria-hidden="true"></span>
+              <span class="tag">Watch on Instagram &#8599;</span>
+            </a>
+          </div>
+          <h3>Before / after</h3>
+          <p><span class="long">Office PC turned gaming PC, step by step. </span>3.1K views on Instagram</p>
         </article>
       </div>
       <p class="organic">More on my channels:
