@@ -86,6 +86,7 @@ section{padding-block:var(--gap-xl) 0}
     linear-gradient(180deg,#171a23,#0d0f14);
 }
 .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.frame.ig:has(iframe){background:#fff}
 .poster{position:absolute;inset:0;display:grid;place-items:center;text-decoration:none;color:var(--text)}
 .poster .play{width:64px;height:64px;border-radius:50%;background:var(--accent);display:grid;place-items:center;box-shadow:0 10px 30px -8px #FFB25B99;transition:transform .15s ease}
 .poster:hover .play{transform:scale(1.06)}
@@ -217,8 +218,8 @@ footer{padding-block:var(--gap-l);color:var(--muted);font-size:.8rem}
           <p>Relatable pain point, product fixes it</p>
         </article>
         <article class="clip">
-          <div class="frame">
-            <a class="poster" href="https://www.instagram.com/reel/Ddz4RcBETlb/" aria-label="Watch the before / after video on Instagram">
+          <div class="frame ig" data-ig="Ddz4RcBETlb">
+            <a class="poster" href="https://www.instagram.com/p/Ddz4RcBETlb/" aria-label="Watch the before / after video on Instagram">
               <span class="play" aria-hidden="true"></span>
               <span class="tag">Watch on Instagram &#8599;</span>
             </a>
@@ -362,6 +363,10 @@ if(/therealshugeymedia\.tech$/.test(location.hostname)){
   document.querySelectorAll('.frame[data-tiktok]').forEach(f=>{
     const id=f.dataset.tiktok;
     f.innerHTML='<iframe src="https://www.tiktok.com/player/v1/'+id+'" allow="fullscreen" allowfullscreen loading="lazy" title="TikTok video"></iframe>';
+  });
+  /* Instagram: official embed player for this exact reel. */
+  document.querySelectorAll('.frame[data-ig]').forEach(f=>{
+    f.innerHTML='<iframe src="https://www.instagram.com/p/'+f.dataset.ig+'/embed/" allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy" title="Instagram reel"></iframe>';
   });
 }
 
