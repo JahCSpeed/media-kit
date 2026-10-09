@@ -340,14 +340,14 @@ footer{padding-block:var(--gap-l);color:var(--muted);font-size:.8rem}
           <p><span class="long">Why NVIDIA's GPU names read like WiFi passwords. </span>27.8K views on Instagram</p>
         </article>
         <article class="clip">
-          <div class="frame ig" data-ig="Ddz4RcBETlb">
-            <a class="poster" href="https://www.instagram.com/p/Ddz4RcBETlb/" aria-label="Watch on Instagram">
+          <div class="frame" data-yt="dtdKRtlJlUQ">
+            <a class="poster" href="https://youtu.be/dtdKRtlJlUQ" aria-label="Watch on YouTube">
               <span class="play" aria-hidden="true"></span>
-              <span class="tag">Instagram &#8599;</span>
+              <span class="tag">YouTube &#8599;</span>
             </a>
           </div>
-          <h3>Office PC to gaming PC</h3>
-          <p><span class="long">Extreme makeover edition, episode 1. </span>25.7K views on Instagram</p>
+          <h3>Drive manufacturers need a buffer</h3>
+          <p><span class="long">Why drive makers should include a little buffer. </span>24.6K views on YouTube</p>
         </article>
       </div>
     </div>
@@ -384,6 +384,10 @@ footer{padding-block:var(--gap-l);color:var(--muted);font-size:.8rem}
 if(/therealshugeymedia\.tech$/.test(location.hostname)){
   document.querySelectorAll('.frame[data-tiktok]').forEach(f=>{
     f.innerHTML='<iframe src="https://www.tiktok.com/player/v1/'+f.dataset.tiktok+'" allow="fullscreen" allowfullscreen loading="lazy" title="TikTok video"></iframe>';
+  });
+  /* YouTube: official embed player. */
+  document.querySelectorAll('.frame[data-yt]').forEach(f=>{
+    f.innerHTML='<iframe src="https://www.youtube.com/embed/'+f.dataset.yt+'" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy" title="YouTube video"></iframe>';
   });
   /* Instagram: official embed player for this exact reel. */
   document.querySelectorAll('.frame[data-ig]').forEach(f=>{
